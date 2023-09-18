@@ -1,0 +1,12 @@
+image: python:3.8.5
+
+pipelines:
+  default:
+    - step:
+      name: Django API tests
+      caches: pip
+      scripts:
+        - pip install pipenv --upgrade
+        - pipenv install --system
+        # linting
+        - pytest todoapp\tests -s -v --durations=0
